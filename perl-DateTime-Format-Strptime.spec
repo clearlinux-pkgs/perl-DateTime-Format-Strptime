@@ -4,7 +4,7 @@
 #
 Name     : perl-DateTime-Format-Strptime
 Version  : 1.75
-Release  : 4
+Release  : 5
 URL      : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/DateTime-Format-Strptime-1.75.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/DateTime-Format-Strptime-1.75.tar.gz
 Summary  : 'Parse and format strp and strf time patterns'
@@ -14,18 +14,25 @@ Requires: perl-DateTime-Format-Strptime-license = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(B::Hooks::EndOfScope)
 BuildRequires : perl(Class::Data::Inheritable)
+BuildRequires : perl(Class::Inspector)
 BuildRequires : perl(Class::Singleton)
 BuildRequires : perl(DateTime)
 BuildRequires : perl(DateTime::Locale)
 BuildRequires : perl(DateTime::Locale::Base)
 BuildRequires : perl(DateTime::Locale::FromData)
 BuildRequires : perl(DateTime::TimeZone)
+BuildRequires : perl(Devel::StackTrace)
+BuildRequires : perl(Eval::Closure)
 BuildRequires : perl(Exception::Class)
 BuildRequires : perl(File::ShareDir)
+BuildRequires : perl(MRO::Compat)
 BuildRequires : perl(Module::Implementation)
+BuildRequires : perl(Module::Runtime)
 BuildRequires : perl(Package::DeprecationManager)
 BuildRequires : perl(Package::Stash)
+BuildRequires : perl(Params::Util)
 BuildRequires : perl(Params::ValidationCompiler)
+BuildRequires : perl(Role::Tiny)
 BuildRequires : perl(Specio)
 BuildRequires : perl(Specio::Declare)
 BuildRequires : perl(Specio::Exporter)
