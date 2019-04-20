@@ -4,10 +4,10 @@
 #
 Name     : perl-DateTime-Format-Strptime
 Version  : 1.76
-Release  : 12
+Release  : 13
 URL      : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/DateTime-Format-Strptime-1.76.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/DateTime-Format-Strptime-1.76.tar.gz
-Summary  : 'Parse and format strp and strf time patterns'
+Summary  : Parse and Format DateTimes using Strptime
 Group    : Development/Tools
 License  : Artistic-2.0
 Requires: perl-DateTime-Format-Strptime-license = %{version}-%{release}
@@ -28,7 +28,9 @@ BuildRequires : perl(File::ShareDir)
 BuildRequires : perl(MRO::Compat)
 BuildRequires : perl(Module::Implementation)
 BuildRequires : perl(Module::Runtime)
+BuildRequires : perl(Package::DeprecationManager)
 BuildRequires : perl(Package::Stash)
+BuildRequires : perl(Params::Util)
 BuildRequires : perl(Params::ValidationCompiler)
 BuildRequires : perl(Role::Tiny)
 BuildRequires : perl(Specio)
@@ -38,6 +40,8 @@ BuildRequires : perl(Specio::Library::Builtins)
 BuildRequires : perl(Specio::Library::String)
 BuildRequires : perl(Sub::Exporter::Progressive)
 BuildRequires : perl(Sub::Identify)
+BuildRequires : perl(Sub::Install)
+BuildRequires : perl(Sub::Name)
 BuildRequires : perl(Test::Fatal)
 BuildRequires : perl(Test::Warnings)
 BuildRequires : perl(Try::Tiny)
@@ -53,6 +57,7 @@ DateTime::Format::Strptime - Parse and format strp and strf time patterns
 Summary: dev components for the perl-DateTime-Format-Strptime package.
 Group: Development
 Provides: perl-DateTime-Format-Strptime-devel = %{version}-%{release}
+Requires: perl-DateTime-Format-Strptime = %{version}-%{release}
 
 %description dev
 dev components for the perl-DateTime-Format-Strptime package.
