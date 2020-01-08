@@ -4,13 +4,14 @@
 #
 Name     : perl-DateTime-Format-Strptime
 Version  : 1.76
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/DateTime-Format-Strptime-1.76.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/DateTime-Format-Strptime-1.76.tar.gz
-Summary  : Parse and Format DateTimes using Strptime
+Summary  : 'Parse and format strp and strf time patterns'
 Group    : Development/Tools
 License  : Artistic-2.0
 Requires: perl-DateTime-Format-Strptime-license = %{version}-%{release}
+Requires: perl-DateTime-Format-Strptime-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(B::Hooks::EndOfScope)
 BuildRequires : perl(Class::Data::Inheritable)
@@ -71,14 +72,24 @@ Group: Default
 license components for the perl-DateTime-Format-Strptime package.
 
 
+%package perl
+Summary: perl components for the perl-DateTime-Format-Strptime package.
+Group: Default
+Requires: perl-DateTime-Format-Strptime = %{version}-%{release}
+
+%description perl
+perl components for the perl-DateTime-Format-Strptime package.
+
+
 %prep
 %setup -q -n DateTime-Format-Strptime-1.76
+cd %{_builddir}/DateTime-Format-Strptime-1.76
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -88,7 +99,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -97,7 +108,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-DateTime-Format-Strptime
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-DateTime-Format-Strptime/LICENSE
+cp %{_builddir}/DateTime-Format-Strptime-1.76/LICENSE %{buildroot}/usr/share/package-licenses/perl-DateTime-Format-Strptime/cd81d97d90fb301574ba5599c1aa00dd26d15c79
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -110,8 +121,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/DateTime/Format/Strptime.pm
-/usr/lib/perl5/vendor_perl/5.28.2/DateTime/Format/Strptime/Types.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -120,4 +129,9 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-DateTime-Format-Strptime/LICENSE
+/usr/share/package-licenses/perl-DateTime-Format-Strptime/cd81d97d90fb301574ba5599c1aa00dd26d15c79
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/DateTime/Format/Strptime.pm
+/usr/lib/perl5/vendor_perl/5.30.1/DateTime/Format/Strptime/Types.pm
