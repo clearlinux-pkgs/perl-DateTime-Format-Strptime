@@ -4,12 +4,13 @@
 #
 Name     : perl-DateTime-Format-Strptime
 Version  : 1.79
-Release  : 23
+Release  : 24
 URL      : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/DateTime-Format-Strptime-1.79.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/DateTime-Format-Strptime-1.79.tar.gz
 Summary  : 'Parse and format strp and strf time patterns'
 Group    : Development/Tools
 License  : Artistic-2.0
+Requires: perl-DateTime-Format-Strptime-license = %{version}-%{release}
 Requires: perl-DateTime-Format-Strptime-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(DateTime)
@@ -26,6 +27,7 @@ BuildRequires : perl(Specio::Library::String)
 BuildRequires : perl(Test::Fatal)
 BuildRequires : perl(Test::Warnings)
 BuildRequires : perl(Try::Tiny)
+BuildRequires : perl(namespace::clean)
 
 %description
 # NAME
@@ -39,6 +41,14 @@ Requires: perl-DateTime-Format-Strptime = %{version}-%{release}
 
 %description dev
 dev components for the perl-DateTime-Format-Strptime package.
+
+
+%package license
+Summary: license components for the perl-DateTime-Format-Strptime package.
+Group: Default
+
+%description license
+license components for the perl-DateTime-Format-Strptime package.
 
 
 %package perl
@@ -76,6 +86,8 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-DateTime-Format-Strptime
+cp %{_builddir}/DateTime-Format-Strptime-1.79/LICENSE %{buildroot}/usr/share/package-licenses/perl-DateTime-Format-Strptime/83111739ffdf88a3b10c17ec4c2af2aa1c7a9773
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -93,6 +105,10 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 %defattr(-,root,root,-)
 /usr/share/man/man3/DateTime::Format::Strptime.3
 /usr/share/man/man3/DateTime::Format::Strptime::Types.3
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-DateTime-Format-Strptime/83111739ffdf88a3b10c17ec4c2af2aa1c7a9773
 
 %files perl
 %defattr(-,root,root,-)
