@@ -4,7 +4,7 @@
 #
 Name     : perl-DateTime-Format-Strptime
 Version  : 1.79
-Release  : 30
+Release  : 31
 URL      : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/DateTime-Format-Strptime-1.79.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/DateTime-Format-Strptime-1.79.tar.gz
 Summary  : 'Parse and format strp and strf time patterns'
